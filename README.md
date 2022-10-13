@@ -28,3 +28,9 @@ Please refer to the original paper for reference:
 All illustrations are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 Details can be found in the [LICENSE](https://creativecommons.org/licenses/by/4.0/) file.
 
+## Contact
+
+If you have questions or any suggestions for improvement, please [contact Lennart Wittkuhn](mailto:wittkuhn@mpib-berlin.mpg.de) or [create a new issue on the issue board](https://github.com/lnnrtwttkhn/replay-illustrations/issues).
+Thank you! :pray:
+
+
