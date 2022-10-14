@@ -1,40 +1,30 @@
 ---
 title: "Replay Illustrations"
-author: "Lennart Wittkuhn"
+author:
+  - name: Dr. Lennart Wittkuhn
+    url: https://lennartwittkuhn.com/
+    affiliation: Max Planck Institute for Human Development
+    affiliation-url: https://www.mpib-berlin.mpg.de/en
+    orcid: 0000-0003-2966-6888
 format:
   html:
     toc: true
     toc-depth: 4
 ---
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![made-with-datalad](https://www.datalad.org/badges/made_with.svg)](https://datalad.org)
+
 ## About
 
-
-## Background
-
-The illustrations in this repository were created using [Affinity Designer](https://affinity.serif.com/en-us/) and include images from [BioRender.com](https://biorender.com/).
-After creating the illustrations I saved them 
-The [repository](https://github.com/lnnrtwttkhn/replay-illustrations) is a [DataLad](https://www.datalad.org/) dataset.
-If you want to learn more about DataLad, I recommend to take a look at the [DataLad Handbook](http://handbook.datalad.org/en/latest/).
-Since GitHub can not hold the annexed data itself, I configured a [GIN repository](https://gin.g-node.org/lnnrtwttkhn/replay-illustrations) that holds the annexed data.
-
-### Creating the website using Quarto
-
-Next, I wanted to create a website to provide an overview of all illustrations and make them available for download.
-To this end, I chose [Quarto](https://quarto.org/) which is "an open-source scientific and technical publishing system built on Pandoc".
-I followed the instructions in the Quarto documentation to [build a basic HTML document](https://quarto.org/docs/output-formats/html-basics.html).
-
-### Deploying the website using GitHub Actions and GitHub Pages
-
-In the next step, I needed a way to deploy the website to make it available online.
-Importantly, I wanted a solution that would automatically update the website whenever a change was made.
-
-Again, I largely followed the instructions in the Quarto documentation on [how to deploy a Quarto website to GitHub pages](https://quarto.org/docs/publishing/github-pages.html).
-
-### Retrieving annexed data in GitHub Actions using a DataLad Docker container
-
-I then pushed the Docker image of the DataLad container to [dockerhub](https://hub.docker.com/repository/docker/lennartwittkuhn/datalad) to make it publicly available.
-
+Welcome!
+This website contains illustrations that I regularly use in talks about [my work](https://scholar.google.de/citations?user=GXvJB1kAAAAJ&hl=de&oi=ao) on investigating fast sequential memory reactivation (replay) in humans using fMRI.
+The source code for this webiste can be found in the corresponding [GitHub repository](https://github.com/lnnrtwttkhn/replay-illustrations).
+If you are interested in how this website was created, check out the [Background](#background) section below.
+All illustrations are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+Details can be found in the [LICENSE](https://github.com/lnnrtwttkhn/replay-illustrations/blob/master/LICENSE) file.
+If you have questions, comments or any suggestions for improvement, please contact me via [email](mailto:wittkuhn@mpib-berlin.mpg.de) or [create a new issue](https://github.com/lnnrtwttkhn/replay-illustrations/issues) on the issue board.
+Thank you!
 
 ```{r, echo=FALSE, message=FALSE, include=FALSE}
 path_output = here::here("illustrations")
@@ -89,3 +79,35 @@ for (path in paths_folders) {
   }
 }
 ```
+
+## Background
+
+The illustrations in this repository were created using [Affinity Designer](https://affinity.serif.com/en-us/) and include images from [BioRender.com](https://biorender.com/).
+After creating the illustrations I saved them 
+The [repository](https://github.com/lnnrtwttkhn/replay-illustrations) is a [DataLad](https://www.datalad.org/) dataset.
+If you want to learn more about DataLad, I recommend to take a look at the [DataLad Handbook](http://handbook.datalad.org/en/latest/).
+
+### Configuring GIN as a data source behind the scenes
+
+Since GitHub can not hold the annexed data itself, I configured a [GIN repository](https://gin.g-node.org/lnnrtwttkhn/replay-illustrations) that holds the annexed data.
+Since I did not want to point intersted users to a hosting service that they might not be familiar with, 
+
+GIN can perform data hosting in the background by using it as an "autoenabled data source" that a dataset sibling (even if it is published to GitHub or GitLab) can retrieve data from.
+To this end, I followed the instructions in the DataLad handbook on [how to use GIN as a data source behind the scenes](https://handbook.datalad.org/en/latest/basics/101-139-gin.html#ginbts).
+
+### Creating the website using Quarto
+
+Next, I wanted to create a website to provide an overview of all illustrations and make them available for download.
+To this end, I chose [Quarto](https://quarto.org/) which is "an open-source scientific and technical publishing system built on Pandoc".
+I followed the instructions in the Quarto documentation to [build a basic HTML document](https://quarto.org/docs/output-formats/html-basics.html).
+
+### Deploying the website using GitHub Actions and GitHub Pages
+
+In the next step, I needed a way to deploy the website to make it available online.
+Importantly, I wanted a solution that would automatically update the website whenever a change was made.
+
+Again, I largely followed the instructions in the Quarto documentation on [how to deploy a Quarto website to GitHub pages](https://quarto.org/docs/publishing/github-pages.html).
+
+### Retrieving annexed data in GitHub Actions using a DataLad Docker container
+
+I then pushed the Docker image of the DataLad container to [dockerhub](https://hub.docker.com/repository/docker/lennartwittkuhn/datalad) to make it publicly available.
