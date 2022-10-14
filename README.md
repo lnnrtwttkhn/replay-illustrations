@@ -1,5 +1,6 @@
 # Replay Illustrations
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![made-with-datalad](https://www.datalad.org/badges/made_with.svg)](https://datalad.org)
 
 ## About
