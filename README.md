@@ -31,7 +31,7 @@ At this point, it contains only small metadata and information on the identity o
 After cloning a dataset, you can retrieve file contents by running
 
 ```bash
-datalad get <path/to/directory/or/file>`
+datalad get <path/to/directory/or/file>
 ```
 
 This command will trigger a download of the files, directories, or subdatasets you have specified.
