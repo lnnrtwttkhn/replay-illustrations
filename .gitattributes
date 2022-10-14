@@ -8,3 +8,4 @@ renv.lock annex.largefiles=nothing
 .Rprofile annex.largefiles=nothing
 /renv/ annex.largefiles=nothing
 .gitignore annex.largefiles=nothing
+index.qmd annex.largefiles=nothing

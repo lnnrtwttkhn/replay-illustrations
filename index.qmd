@@ -1,0 +1,91 @@
+---
+title: "Replay Illustrations"
+author: "Lennart Wittkuhn"
+format:
+  html:
+    toc: true
+    toc-depth: 4
+---
+
+## About
+
+
+## Background
+
+The illustrations in this repository were created using [Affinity Designer](https://affinity.serif.com/en-us/) and include images from [BioRender.com](https://biorender.com/).
+After creating the illustrations I saved them 
+The [repository](https://github.com/lnnrtwttkhn/replay-illustrations) is a [DataLad](https://www.datalad.org/) dataset.
+If you want to learn more about DataLad, I recommend to take a look at the [DataLad Handbook](http://handbook.datalad.org/en/latest/).
+Since GitHub can not hold the annexed data itself, I configured a [GIN repository](https://gin.g-node.org/lnnrtwttkhn/replay-illustrations) that holds the annexed data.
+
+### Creating the website using Quarto
+
+Next, I wanted to create a website to provide an overview of all illustrations and make them available for download.
+To this end, I chose [Quarto](https://quarto.org/) which is "an open-source scientific and technical publishing system built on Pandoc".
+I followed the instructions in the Quarto documentation to [build a basic HTML document](https://quarto.org/docs/output-formats/html-basics.html).
+
+### Deploying the website using GitHub Actions and GitHub Pages
+
+In the next step, I needed a way to deploy the website to make it available online.
+Importantly, I wanted a solution that would automatically update the website whenever a change was made.
+
+Again, I largely followed the instructions in the Quarto documentation on [how to deploy a Quarto website to GitHub pages](https://quarto.org/docs/publishing/github-pages.html).
+
+### Retrieving annexed data in GitHub Actions using a DataLad Docker container
+
+I then pushed the Docker image of the DataLad container to [dockerhub](https://hub.docker.com/repository/docker/lennartwittkuhn/datalad) to make it publicly available.
+
+
+```{r, echo=FALSE, message=FALSE, include=FALSE}
+path_output = here::here("illustrations")
+return_code = Sys.getenv("CI")
+if (return_code == "true") {
+  system2("echo", args = c("Running in CI environment"))
+  branch = Sys.getenv("CI_COMMIT_BRANCH")
+  repo_url = Sys.getenv("CI_REPOSITORY_URL")
+  branch = "master"
+  repo_url = "https://github.com/lnnrtwttkhn/replay-illustrations"
+  path_template = file.path(repo_url, "-", "jobs", "artifacts", branch, "raw", "output")
+} else {
+  path_template = path_output
+}
+```
+
+## Illustrations
+
+```{r, echo=FALSE, results='asis'}
+newline = "\n\n\n"
+extentions = c(".pdf", ".png", ".afdesign")
+paths_folders = base::list.dirs(path = path_output, full.names = TRUE, recursive = FALSE)
+text_prints = c()
+for (path in paths_folders) {
+  folder_name = base::basename(path)
+  text_folder = sprintf("### %s%s", folder_name, newline)
+  cat(text_folder)
+  files = base::list.files(path = path)
+  files = files[unlist(lapply(X = files, FUN = function(x) grepl(paste(extentions, collapse = "|"), x)))]
+  files_unique = unique(unlist(lapply(X = files, FUN = function(x) tools::file_path_sans_ext(x))))
+  for (file in files_unique) {
+    text_file = sprintf("#### %s%s", file, newline)
+    cat(text_file)
+    text_download = "Download figure as:"
+    for (ext in extentions) {
+      path_file = file.path(path_output, folder_name, paste0(file, ext))
+      path_link = file.path(path_template, folder_name, paste0(file, ext))
+      if (!file.exists(path_file)) {
+        next
+      }
+      if (Sys.getenv("CI") == "true") {
+        path_link = paste0(path_link, "?job=renv")
+      }
+      if (ext %in% c(".png", ".gif")) {
+        text_image = sprintf("![](%s)%s", path_file, newline)
+        cat(text_image)
+      }
+      text_download = sprintf(paste(text_download, "[[%s]](%s)"), ext, path_link)
+    }
+    text_download = paste0(text_download, newline)
+    cat(text_download)
+  }
+}
+```
