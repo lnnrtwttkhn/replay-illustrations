@@ -1,5 +1,6 @@
 # Replay Illustrations
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![made-with-datalad](https://www.datalad.org/badges/made_with.svg)](https://datalad.org)
 
 ## About
@@ -30,7 +31,7 @@ At this point, it contains only small metadata and information on the identity o
 After cloning a dataset, you can retrieve file contents by running
 
 ```bash
-datalad get <path/to/directory/or/file>`
+datalad get <path/to/directory/or/file>
 ```
 
 This command will trigger a download of the files, directories, or subdatasets you have specified.
@@ -70,6 +71,22 @@ The chapter "DataLad datasets" can help you to familiarize yourself with the con
 To edit the `.afdesign` files you need [Affinity Designer](https://affinity.serif.com/de/designer/).
 I currently use version 1.5.5.
 Affinity Designer is not free but cheaper than Adobe Illustrator.
+
+### DataLad
+
+#### DataLad Docker
+
+After updating the [Dockerfile](.docker/datalad/Dockerfile), I use the following command to build and push the newest image to [dockerhub](https://hub.docker.com/r/lennartwittkuhn/datalad) (following `docker login`):
+
+```bash
+export DATALAD_VERSION=0.17.6
+docker build -t lennartwittkuhn/datalad:$DATALAD_VERSION --platform linux/arm64 --build-arg DOCKER_TAG=$DATALAD_VERSION .docker/datalad
+docker push lennartwittkuhn/datalad:$DATALAD_VERSION
+```
+
+```bash
+docker run --rm  --entrypoint /bin/sh --platform linux/arm64 --memory="100M" lennartwittkuhn/datalad:$DATALAD_VERSION -c "datalad install --get-data https://github.com/lnnrtwttkhn/replay-illustrations"
+```
 
 ## Credit
 
