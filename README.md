@@ -72,6 +72,22 @@ To edit the `.afdesign` files you need [Affinity Designer](https://affinity.seri
 I currently use version 1.5.5.
 Affinity Designer is not free but cheaper than Adobe Illustrator.
 
+### DataLad
+
+#### DataLad Docker
+
+After updating the [Dockerfile](.docker/datalad/Dockerfile), I use the following command to build and push the newest image to [dockerhub](https://hub.docker.com/r/lennartwittkuhn/datalad) (following `docker login`):
+
+```bash
+export DATALAD_VERSION=0.17.6
+docker build -t lennartwittkuhn/datalad:$DATALAD_VERSION --platform linux/arm64 --build-arg DOCKER_TAG=$DATALAD_VERSION .docker/datalad
+docker push lennartwittkuhn/datalad:$DATALAD_VERSION
+```
+
+```bash
+docker run --rm  --entrypoint /bin/sh --platform linux/arm64 --memory="100M" lennartwittkuhn/datalad:$DATALAD_VERSION -c "datalad install --get-data https://github.com/lnnrtwttkhn/replay-illustrations"
+```
+
 ## Credit
 
 Several illustrations contain images from [BioRender.com](https://biorender.com/) which were created under a plan for the [Max Planck Society](https://www.mpg.de/en) which allows publication in journals and for other academic purposes (for details, see BioRender's [overview of Licensing and Usage](https://public.biorender.com/info/plans.pdf)).
