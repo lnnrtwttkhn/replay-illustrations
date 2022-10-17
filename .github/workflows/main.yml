@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lennartwittkuhn/datalad:0.17.6
-      options: --entrypoint /bin/sh
+      options: --entrypoint /bin/sh --platform linux/arm64
     steps:
       - name: Install and Build
         run: |
