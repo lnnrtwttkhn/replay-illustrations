@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lennartwittkuhn/datalad:0.17.6
+      with:
+        entrypoint: /bin/sh
     steps:
       - name: Install and Build
         run: |
