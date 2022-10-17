@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Install and Build
         run: |
-          datalad install --get-data https://github.com/$GITHUB_REPOSITORY
+          datalad install --get-data https://github.com/lnnrtwttkhn/replay-illustrations
           datalad unlock -d replay-illustrations replay-illustrations/illustrations
       - name: Upload artifact
         uses: actions/upload-artifact@v2
