@@ -20,6 +20,7 @@ jobs:
           path: replay-illustrations/illustrations
   build-deploy:
     runs-on: ubuntu-latest
+    needs: retrieve
     permissions:
       contents: write
     steps:
