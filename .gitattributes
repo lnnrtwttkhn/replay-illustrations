@@ -10,3 +10,4 @@ renv.lock annex.largefiles=nothing
 .gitignore annex.largefiles=nothing
 index.qmd annex.largefiles=nothing
 .github/workflows/main.yml annex.largefiles=nothing
+/.docker/ annex.largefiles=nothing
