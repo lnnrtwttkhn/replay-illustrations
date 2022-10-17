@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lennartwittkuhn/datalad:0.17.6
-      options: --entrypoint /bin/sh --platform linux/arm64
+      options: --platform linux/arm64
     steps:
       - name: Install and Build
         run: |
-          datalad install --get-data https://github.com/lnnrtwttkhn/replay-illustrations
-          datalad unlock -d replay-illustrations replay-illustrations/illustrations
+          install --get-data https://github.com/lnnrtwttkhn/replay-illustrations
+          unlock -d replay-illustrations replay-illustrations/illustrations
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
